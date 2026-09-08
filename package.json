@@ -1,0 +1,12 @@
+{
+  "name": "travis-ci-demo",
+  "version": "1.0.0",
+  "description": "Exemplo prático de Integração Contínua com Travis CI",
+  "main": "src/calculator.js",
+  "scripts": {
+    "test": "node --test"
+  },
+  "keywords": ["travis-ci", "ci", "continuous-integration", "automated-tests"],
+  "author": "Equipe de Apresentacao",
+  "license": "MIT"
+}

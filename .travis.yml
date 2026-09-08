@@ -1,0 +1,42 @@
+# 1. Definição da Linguagem base
+language: node_js
+
+# 2. Matriz de Build: testa em múltiplas versões do Node.js simultaneamente
+node_js:
+  - "18"
+  - "20"
+
+# 3. Definição do Ambiente / Sistema Operacional
+os: linux
+dist: jammy # Ubuntu 22.04 LTS
+
+# 4. Fase de Pré-instalação (Configurações do SO e Diagnóstico)
+before_install:
+  - echo "Preparando ambiente para a build no Travis CI..."
+  - node -v
+  - npm -v
+
+# 5. Fase de Instalação de Dependências
+install:
+  - npm install
+
+# 6. Fase de Pré-Script
+before_script:
+  - echo "Dependências instaladas com sucesso. Iniciando bateria de testes..."
+
+# 7. Fase Principal da Pipeline: Execução dos Testes Automatizados
+script:
+  - npm test
+
+# 8. Ações pós-execução (Hooks condicionais)
+after_success:
+  - echo "Build e testes concluídos com SUCESSO! Pronto para entrega/deploy."
+
+after_failure:
+  - echo "Build FALHOU! Verifique os testes acima para identificar o erro."
+
+# 9. Configurações de Notificação
+notifications:
+  email:
+    on_success: change # Notifica apenas se mudar de falha para sucesso
+    on_failure: always # Sempre notifica se quebrar
